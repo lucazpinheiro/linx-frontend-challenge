@@ -1,22 +1,48 @@
+/**
+ * Initial API end point.
+ */
 const INITIAL_ENDPOINT = 'https://frontend-intern-challenge-api.iurykrieger.now.sh/products?page=1';
+/**
+ * Page node to update.
+ */
 const productElement = document.getElementById('products');
+/**
+ * Array that receives the products data.
+ */
 const products = [];
+/**
+ * String to be updated with the new API end point.
+ */
 let currentEndpoint = '';
-let producCards = '';
 
+/**
+ * Calls API and return a promise with next end point and products array.
+ * @param  {String} apiEndpoint API endpoint to be called
+ * @return {Promise}            Promise to be resolved where function were called
+ */
 async function getProducts(apiEndpoint) {
   try {
     const response = await fetch(apiEndpoint, { method: 'Get' });
     return await response.json();
   } catch (err) {
-    // do something with error
+    return err
   }
 }
 
+/**
+ * Format value string to value in the local currency
+ * @param  {Number} value Some value propertie from product object
+ * @return {String}       Value converted to local currency string
+ */
 function convertValueToReal(value) {
   return value.toLocaleString('pt-br', { minimumFractionDigits: 2 });
 }
 
+/**
+ * Generete html component card with properties from product object.
+ * @param  {Object} product Object with properties for product
+ * @return {String}         String of html component builted with product properties
+ */
 function buildCard(product, convertValue) {
   const {
     id,
@@ -41,15 +67,36 @@ function buildCard(product, convertValue) {
   `;
 }
 
+/**
+ * Return array from a map function on array of products, each element of the returned arrays is a html component.
+ * @param  {Function} builder        Function callback that returns a string from a object parameter
+ * @param  {Array}    productsList   Array of products objects
+ * @param  {Function} valueConverter Function callback that returns string converted to local currency 
+ * @return {Array}                   String of html components builted with product properties
+ */
 function getAllCards(builder, productsList, valueConverter) {
   return productsList.map((product) => builder(product, valueConverter));
 }
 
-
+/**
+ * Update page by adding html string to dom.
+ * @param  {Node}   domElement    Reference to html element
+ * @param  {String} htmlComponent String of html component to be added to the page   
+ */
 function addElementToPage(domElement, htmlComponent) {
   domElement.innerHTML = htmlComponent;
 }
 
+/**
+ * Warnes user that some error happend during products data fetching.
+ */
+function handleError() { 
+  alert('Não foi possível carregar seus produtos. Por favor, tente novamente mais tarde.');
+}
+
+/**
+ * Update page by adding html string to the dom.
+ */
 function addMoreProcuts() {
   getProducts(currentEndpoint).then((data) => {
     products.push(...data.products);
@@ -57,14 +104,27 @@ function addMoreProcuts() {
 
     const productCards = getAllCards(buildCard, products, convertValueToReal);
     addElementToPage(productElement, productCards.join(''));
-  })
+  }).catch((err) => {
+    console.log(err);
+    handleError();
+  });
 }
 
+/**
+ * Call function to get data from api, updates 'products' and 'currentEndpoint' variables, calls 'getAllCards' and 'addElementToPage' functions, when page is loaded.
+ */
 (async () => {
-  const data = await getProducts(INITIAL_ENDPOINT);
-  products.push(...data.products);
-  currentEndpoint = `https://${data.nextPage}`;
-  
-  const productCards = getAllCards(buildCard, products, convertValueToReal);
-  addElementToPage(productElement, productCards.join(''));
+  try {
+    const data = await getProducts(INITIAL_ENDPOINT);
+    products.push(...data.products);
+    currentEndpoint = `https://${data.nextPage}`;
+
+    console.log(data.products);
+    
+    const productCards = getAllCards(buildCard, products, convertValueToReal);
+    addElementToPage(productElement, productCards.join(''));
+  } catch (err){
+    console.log(err);
+    handleError();
+  }
 })();
