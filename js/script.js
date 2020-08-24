@@ -29,13 +29,13 @@ function buildCard(product, convertValue) {
   } = product;
 
   return`
-    <div id="product-card${id}">
+    <div class="product-card" id="product-card${id}">
       <img src="${image}" alt="${name} image">
-      <div>${name}</div>
-      <div>${description}</div>
-      <div>De: R$${convertValue(oldPrice)}</div>
-      <div><strong>Por: R${convertValue(price)}</strong></div>
-      <div>Ou ${installments.count}x de R$${convertValue(installments.value)}</div>
+      <div class="product-name">${name}</div>
+      <div class="product-description">${description}</div>
+      <div class="product-price">De: R$${convertValue(oldPrice)}</div>
+      <div class="product-oldPrice"><strong>Por: R${convertValue(price)}</strong></div>
+      <div class="product-installments">Ou ${installments.count}x de R$${convertValue(installments.value)}</div>
       <button class="buy-product-button">Comprar</button>
     </div>
   `;

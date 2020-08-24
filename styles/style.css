@@ -3,12 +3,22 @@
 }
 
 body {
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Normal Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+
+/* general styling for inputs */
 button {
-    height: 40px;   
-    margin: 0 20px;
+    height: 40px;
+    width: 200px;
     box-shadow: 0px 1px 6px #00000029;
     border-radius: 4px;
     border: 1px solid #707070;
@@ -17,7 +27,29 @@ button {
     font: Normal 14px/16px Helvetica Neue,Helvetica;
 }
 
+label {
+    text-align: left;
+    font: Normal 12px/14px Helvetica Neue, Helvetica;
+}
+
+.input-container {
+    margin-top: 14px;
+}
+
+.typed-input {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #707070;
+    box-sizing : border-box;
+    padding: 0 10px;
+    font: Normal 14px/16px Helvetica Neue, Helvetica;
+    color: #555555;
+}
+
+
+/* HEADER */
 header {
+    width: 100%;
     height: 320px;
     display: flex;
     flex-direction: column;
@@ -26,6 +58,7 @@ header {
     text-align: center;
     background-color: #707070;
     color: #ffffff;
+    margin-bottom: 20px;
 }
 
 header h1 {
@@ -44,6 +77,154 @@ li {
     display: inline;
 }
 
+header a {
+    padding-right: 31px;
+    padding-left: 31px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    text-decoration: none;
+    margin: 0 20px;
+    box-shadow: 0px 1px 6px #00000029;
+    border-radius: 4px;
+    border: 1px solid #707070;
+    background-color: #ffffff;
+    color: #888888;
+    font: Normal 14px/16px Helvetica Neue,Helvetica;
+}
+
+/* MAIN */
+
+/* HELP ALGO SECTION */
+#help-algo-section {
+    margin-bottom: 95px;
+    overflow: auto;
+}
+
+#help-algo-section .text-container {
+    margin-top: 14px;
+    width: 55%;
+    float: left;
+}
+
+#help-algo-section .text-container h3 {
+    height: 23px;
+    font: Normal 20px/24px Helvetica Neue, Helvetica;
+    text-align: left;
+}
+
+#help-algo-section .text-container text {
+    height: 23px;
+    text-align: left;
+    /* height: 220px; */
+    /* align-items: left; */
+    font: Normal 12px/18px Helvetica Neue, Helvetica;
+}
+
+#help-algo-section .form-container {
+    margin-left: 5%;
+    width: 35%;
+    float: left;
+}
+
+#help-algo-section button {
+    width: 100%;
+}
+
+/* PRODUCTS SECTION */
+#products-section {
+    width: 100%;
+    margin: 0 auto;
+    grid-gap: 30px 40px;
+    justify-items: center;
+    margin: 50px 0 43px;
+    margin-bottom: 120px;
+}
+
+#products-section h3 {
+    height: 22px;
+    text-align: center;
+    font: Bold 18px/16px Helvetica Neue, Helvetica;
+    color: #888888
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* GRID */
+.products-display {
+    display: grid;
+}
+
+.grid-template-columns {
+    align-items: center;
+    grid-template-columns: auto auto auto auto;
+}
+
+/* PROCT CARD */
+.product-card {
+    color: #888888;
+    text-decoration: none;
+    height: 350px;
+    width: 200px;
+    justify-content: center;
+}
+
+.product-name {
+    font: Normal 14px/16px  Helvetica Neue, Helvetica;
+}
+
+.product-price {
+    font: Bold 16px/16px  Helvetica Neue, Helvetica;
+}
+
+.product-description {
+    font: Normal 12px/16px Helvetica Neue, Helvetica;
+}
+
+.product-oldPrice {
+    font: Normal 12px/16px Helvetica Neue, Helvetica;
+}
+
+.product-installments {
+    font: Normal 12px/16px Helvetica Neue, Helvetica;
+}
+
+/* SHARE SECTION */
+
+#share-section  {
+    margin-bottom: 70px;
+}
+
+#share-section h3 {
+    height: 22px;
+    text-align: center;
+    font: Bold 18px/16px Helvetica Neue, Helvetica;
+    color: #888888
+}
+
+#share-section .share-text {
+    text-align: center;
+    font: Normal 14px/16px Helvetica Neue, Helvetica;
+    letter-spacing: 0px;
+    color: #888888;
+}
+
+#share-section .input-row {
+    overflow: auto;
+}
+
+#share-section .input-container {
+    float: left;
+    width: 340px;
+    margin: 30px;
+}
+
+/* FOOTER */
 footer {
     width: 100%;
     height: 201px;
