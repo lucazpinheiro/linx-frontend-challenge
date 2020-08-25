@@ -6,6 +6,8 @@
 
 The [challenge](https://github.com/chaordic/frontend-developer-challenge) was to build a landing page with a grid of products and a newsletter form based on this [layout](https://xd.adobe.com/spec/4025e242-a495-4594-71d2-5fd89d774b57-3614/grid).
 
+Check the live demo [here](https://linx-live-demo.herokuapp.com/)
+
 ### `running`
 
 * Option one
