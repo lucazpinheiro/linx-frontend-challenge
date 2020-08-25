@@ -115,8 +115,6 @@ header a {
 #help-algo-section .text-container text {
     height: 23px;
     text-align: left;
-    /* height: 220px; */
-    /* align-items: left; */
     font: Normal 12px/18px Helvetica Neue, Helvetica;
 }
 
@@ -194,7 +192,6 @@ header a {
 }
 
 /* SHARE SECTION */
-
 #share-section  {
     margin-bottom: 70px;
 }
@@ -238,7 +235,6 @@ footer {
 }
 
 /* RESPONSIVENESS */
-
 @media only screen and (max-width:500px) {
     #help-algo-section .text-container {
         width: 100%;
@@ -258,8 +254,7 @@ footer {
 
     header {
         text-align: left;
-    }
-    
+    } 
 
     header a {
         padding-right: 31px;
